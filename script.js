@@ -257,6 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('startTourBtn');
 
     function positionTooltip(targetElement) {
+        if (window.innerWidth <= 768) {
+            tooltip.style.top = '';
+            tooltip.style.left = '';
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
         const rect = targetElement.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
         
