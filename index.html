@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P Mart ERP - Single Source of Truth</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- 0. Top Navigation Bar (Live Link) -->
+      <nav class="top-bar">
+        <div class="top-bar-content">
+          <span class="production-label">LIVE SYSTEM</span>
+          <a
+            href="https://p-mart-erp.vercel.app"
+            target="_blank"
+            class="live-system-link"
+          >
+            Access to Blue Print
+          </a>
+        </div>
+      </nav>
+
+      <!-- 1. Top Navigation & Global Status -->
+      <header class="glass-panel floating-header">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          <h1>
+            P Mart ERP <span class="subtitle">- Single Source of Truth</span>
+          </h1>
+          <button id="startTourBtn" class="tour-start-btn">Take a Tour</button>
+        </div>
+        <div class="global-status">
+          <div class="status-indicator">
+            <span class="pulse online"></span>
+            <span class="glow-text online-text">POS Sync: ONLINE</span>
+          </div>
+          <div class="status-indicator">
+            <span class="pulse stable"></span>
+            <span class="glow-text stable-text">Cloud Server: STABLE</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 2. Levitating KPI Overview Cards -->
+      <section class="kpi-grid">
+        <div class="glass-panel kpi-card">
+          <div class="kpi-header">Lost Sales Prevented</div>
+          <div class="kpi-value glow-magenta">Rp 2.45M</div>
+          <div class="kpi-subtext">Value Creation</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-header">Inventory Accuracy</div>
+          <div class="kpi-value glow-cyan">99.9%</div>
+          <div class="kpi-subtext">Aggregator miscalculation fixed</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-header">Stockout Risk</div>
+          <div class="kpi-value glow-green">0 Items</div>
+          <div class="kpi-subtext">Zero stockout achieved</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-header">Auto-PO Active</div>
+          <div class="kpi-value glow-cyan">12 Docs</div>
+          <div class="kpi-subtext">P2P Automation Live</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-header">Real-time Revenue</div>
+          <div class="kpi-value glow-magenta" id="real-time-revenue">
+            Rp 14,250,000
+          </div>
+          <div class="kpi-subtext">O2C Live Sync</div>
+        </div>
+      </section>
+
+      <!-- 3. Main Dashboard Widgets -->
+      <section class="main-widgets-grid">
+        <!-- Widget A: MM Module -->
+        <div class="glass-panel widget mm-widget">
+          <div class="widget-header">
+            <h2 class="glow-cyan">P2P & Logistics</h2>
+            <span class="module-badge cyan">MM</span>
+          </div>
+
+          <div class="widget-content">
+            <div class="rop-alerts">
+              <h3>Reorder Point (ROP) Alerts</h3>
+              <ul class="alert-list">
+                <li>
+                  <span>Aqua 600ml</span>
+                  <span class="alert-val">Below 15%</span>
+                </li>
+                <li>
+                  <span>Ultra Milk 1L</span>
+                  <span class="alert-val">Below 20%</span>
+                </li>
+                <li>
+                  <span>Tissue Paseo</span>
+                  <span class="alert-val">Below 10%</span>
+                </li>
+              </ul>
+            </div>
+
+            <button class="glow-button cyan-btn">Auto-Generate PR to PO</button>
+
+            <div class="supplier-performance">
+              <h3>Supplier Performance</h3>
+              <div class="perf-stats">
+                <div class="stat-item">
+                  <span>Lead Time:</span>
+                  <span class="glow-cyan">4.2 Days</span> (Target: 4-5)
+                </div>
+                <div class="stat-item">
+                  <span>MOQ Status:</span>
+                  <span class="glow-cyan">100% Compliant</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="safety-stock">
+              <h3>Safety Stock vs Actual Level</h3>
+              <div class="stock-bar-group">
+                <span class="brand-name">Unilever</span>
+                <div class="stock-bar-container">
+                  <div class="stock-actual" style="width: 85%"></div>
+                  <div class="stock-safety" style="left: 30%"></div>
+                </div>
+              </div>
+              <div class="stock-bar-group">
+                <span class="brand-name">Ultrajaya</span>
+                <div class="stock-bar-container">
+                  <div class="stock-actual" style="width: 60%"></div>
+                  <div class="stock-safety" style="left: 40%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="status-tracker">
+              <h3>MIGO Status (Goods Receipt) - Unilever</h3>
+              <div class="progress-bar-container">
+                <div class="progress-bar cyan-bar" style="width: 75%"></div>
+              </div>
+              <span class="progress-text">75% Received</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget B: SD Module -->
+        <div class="glass-panel widget sd-widget">
+          <div class="widget-header">
+            <h2 class="glow-magenta">O2C Live POS Sync</h2>
+            <span class="module-badge magenta">SD</span>
+          </div>
+
+          <div class="widget-content center-align">
+            <div class="badge isolated-badge">
+              Isolated from Payment Aggregator - 100% Accurate Goods Issue
+            </div>
+            <div class="badge offline-badge">
+              <span class="pulse magenta-pulse"></span> POS Offline Cache:
+              ACTIVE (Syncing 12 queued txns)
+            </div>
+            <div class="chart-container">
+              <div class="watermark glow-magenta">Single Source of Truth</div>
+              <canvas id="tlogChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget C: FI Module -->
+        <div class="glass-panel widget fi-widget">
+          <div class="widget-header">
+            <h2 class="glow-green">R2R Financial Control</h2>
+            <span class="module-badge green">FI</span>
+          </div>
+
+          <div class="widget-content">
+            <div class="ring-container">
+              <canvas id="matchingRing"></canvas>
+              <div class="ring-overlay">
+                <span class="ring-text glow-green">Match</span>
+                <div class="ring-subtext">Verified via MIRO</div>
+                <div class="ring-subtext pending-inv">Invoices Pending: 3</div>
+              </div>
+            </div>
+
+            <div class="profit-sparkline-container">
+              <h3>Real-time Profit Margin</h3>
+              <div class="sparkline-wrapper">
+                <canvas id="profitSparkline"></canvas>
+              </div>
+            </div>
+
+            <div class="auto-journals">
+              <h3>OBYC Auto-Journals Feed</h3>
+              <div class="journal-feed">
+                <div class="journal-item">
+                  <span class="time">10:15</span>
+                  <span class="desc">Sales Revenue Posted</span>
+                  <span class="amt positive">+ Rp 150k</span>
+                </div>
+                <div class="journal-item">
+                  <span class="time">10:12</span>
+                  <span class="desc">Credit Memo: Expired Goods</span>
+                  <span class="amt negative">- Rp 25k</span>
+                </div>
+                <div class="journal-item">
+                  <span class="time">10:08</span>
+                  <span class="desc">Inventory GR/IR Clearing</span>
+                  <span class="amt neutral">Match</span>
+                </div>
+                <div class="journal-item">
+                  <span class="time">10:05</span>
+                  <span class="desc">Sales Revenue Posted</span>
+                  <span class="amt positive">+ Rp 45k</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Risk & Roadmap Floating Dock -->
+      <footer class="glass-panel floating-dock">
+        <div class="roadmap-title">6-Month Implementation Roadmap</div>
+        <div class="roadmap-steps">
+          <div class="step completed">1. Blueprint</div>
+          <div class="step completed">2. Config</div>
+          <div class="step completed">3. Dev</div>
+          <div class="step completed">4. UAT</div>
+          <div class="step active glow-dock pulse-heavy">
+            5. Go-Live & Parallel Sync
+          </div>
+          <div class="step">6. Support</div>
+        </div>
+        <div class="dock-progress">
+          <div class="dock-bar" style="width: 83%"></div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Onboarding Tour Elements (Antigravity UI Theme) -->
+    <div class="tour-overlay" id="tourOverlay"></div>
+    <div class="tour-tooltip antigravity-tooltip" id="tourTooltip">
+      <div class="tour-header">
+        <span class="tour-step-badge" id="tourStepBadge">Welcome</span>
+        <button class="tour-close" id="tourClose">&times;</button>
+      </div>
+      <h3 id="tourTitle" class="tour-title">Welcome</h3>
+      <p id="tourText" class="tour-text">Text goes here</p>
+      <div class="tour-footer">
+        <button class="tour-nav-btn prev" id="tourPrev">Previous</button>
+        <button class="tour-nav-btn next glow-btn-custom" id="tourNext">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
